@@ -27,8 +27,11 @@ exports.config = {
     // will be called from there.
     //
     specs: [
-        // './test/specs/register.js',
-        './test/specs/login.js'
+        // './test/specs/negative/negative.login.js',
+        // './test/specs/negative/negative.register.js',
+        // './test/specs/positive/positive.login.js',
+        './test/specs/positive/positive.register.js'
+
     ],
     // Patterns to exclude.
     exclude: [

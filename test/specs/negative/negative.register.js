@@ -1,18 +1,18 @@
 describe('Test Sample Login Register APK', () => {
     it('Apps opened', async() => {
         const header_logo = await $('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.ScrollView/android.support.v7.widget.LinearLayoutCompat/android.widget.ImageView')
-        expect(header_logo).toExist()
-        expect(header_logo).toBeDisplayed()
+        expect (header_logo).toExist()
+        expect (header_logo).toBeDisplayed()
 
         const header_app_version = await $('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.ScrollView/android.support.v7.widget.LinearLayoutCompat/android.widget.TextView[1]')
-        expect(header_app_version).toExist()
-        expect(header_app_version).toBeDisplayed()
-        expect(header_app_version).toHaveText('VERSION - V4')
+        expect (header_app_version).toExist()
+        expect (header_app_version).toBeDisplayed()
+        expect (header_app_version).toHaveText('VERSION - V4')
 
         const link_register = await $('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.ScrollView/android.support.v7.widget.LinearLayoutCompat/android.widget.TextView[2]')
-        expect(link_register).toExist()
-        expect(link_register).toBeDisplayed()
-        expect(link_register).toHaveText('No account yet? Create one')
+        expect (link_register).toExist()
+        expect (link_register).toBeDisplayed()
+        expect (link_register).toHaveText('No account yet? Create one')
         await (link_register).click()
     })
 
@@ -31,13 +31,20 @@ describe('Test Sample Login Register APK', () => {
         await (input_password).addValue("password123")
     })
 
-    it('User input confirm password', async() => {
+    it('User input mismatch confirm password', async() => {
         const input_confirm_password = await $('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.ScrollView/android.support.v7.widget.LinearLayoutCompat/TextInputLayout[4]/android.widget.EditText')
-        await (input_confirm_password).addValue("password123")
+        await (input_confirm_password).addValue("123pass")
     })
 
     it('User click button register', async() => {
         const button_register = await $('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.ScrollView/android.support.v7.widget.LinearLayoutCompat/android.widget.Button')
         await (button_register).click()
+    })
+
+    it('User see alert message', async () => {
+        const alert = await $('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.ScrollView/android.support.v7.widget.LinearLayoutCompat/TextInputLayout[4]/android.widget.LinearLayout/android.widget.TextView')
+        expect (alert).toExist()
+        expect (alert).toBeDisplayed()
+        expect (alert).toHaveText("Password Does Not Matches")
     })
 })
