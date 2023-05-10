@@ -7,9 +7,9 @@ exports.config = {
     // ====================
     // WebdriverIO supports running e2e tests as well as unit and component tests.
     runner: 'local',
-    path : '/wd/hub',
-    port : 4723,
-    
+    path: '/wd/hub',
+    port: 4723,
+
     //
     // ==================
     // Specify Test Files
@@ -27,12 +27,12 @@ exports.config = {
     // will be called from there.
     //
     specs: [
-        // './test/specs/negative/negative.login.js',
-        // './test/specs/negative/negative.register.js',
-        // './test/specs/positive/positive.login.js',
-        './test/specs/positive/positive.register.js'
-
+        // './test/specs/login/negative.login.js',
+        // './test/specs/login/positive.login.js',
+        // './test/specs/register/negative.register.js',
+        './test/specs/register/positive.register.js'
     ],
+
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
@@ -60,15 +60,15 @@ exports.config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        platformName                : "Android",
-        "appium:automationName"     : 'UiAutomator2',
-        "appium:deviceName"         : 'M22 milik Dwiky',
-        "appium:platformVersion"    : '13.0',
-        "appium:app"                : path.join(process.cwd(),'./test/apk/Sample_Android_App_Login_Tes_4.0.apk'),
-        "appium:appPackage"         : "com.loginmodule.learning",
-        "appium:appActivity"        : ".activities.LoginActivity",
-        "appium:noReset"            : true,
-        "appium:forceAppLaunch"     : true,
+        platformName: "Android",
+        "appium:automationName": 'UiAutomator2',
+        "appium:deviceName": 'M22 milik Dwiky',
+        "appium:platformVersion": '13.0',
+        "appium:app": path.join(process.cwd(), './test/apk/Sample_Android_App_Login_Tes_4.0.apk'),
+        "appium:appPackage": "com.loginmodule.learning",
+        "appium:appActivity": ".activities.LoginActivity",
+        "appium:noReset": true,
+        "appium:forceAppLaunch": true,
     }],
     //
     // ===================
@@ -118,19 +118,19 @@ exports.config = {
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
     services: [
-        [   
+        [
             'appium',
             {
-                args : {
-                    address : 'localhost',
-                    port    : 4723,
+                args: {
+                    address: 'localhost',
+                    port: 4723,
                 },
-                logPath : './log',
-                command : 'appium'
+                logPath: './log',
+                command: 'appium'
             }
         ]
     ],
-    
+
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
     // see also: https://webdriver.io/docs/frameworks
@@ -153,7 +153,7 @@ exports.config = {
     // see also: https://webdriver.io/docs/dot-reporter
     reporters: ['spec'],
 
-    
+
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
